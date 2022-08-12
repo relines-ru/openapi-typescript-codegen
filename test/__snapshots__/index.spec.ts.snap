@@ -1026,7 +1026,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one property containing an array
  */
-export type ModelWithArray = {
+export interface ModelWithArray {
     prop?: Array<ModelWithString>;
     propWithFile?: Array<Blob>;
     propWithNumber?: Array<number>;
@@ -1043,7 +1043,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithBoolean.ts 1`] 
 /**
  * This is a model with one boolean property
  */
-export type ModelWithBoolean = {
+export interface ModelWithBoolean {
     /**
      * This is a simple boolean property
      */
@@ -1061,7 +1061,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithCircularReferen
 /**
  * This is a model with one property containing a circular reference
  */
-export type ModelWithCircularReference = {
+export interface ModelWithCircularReference {
     prop?: ModelWithCircularReference;
 };
 
@@ -1076,7 +1076,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithDictionary.ts 1
 /**
  * This is a model with one property containing a dictionary
  */
-export type ModelWithDictionary = {
+export interface ModelWithDictionary {
     prop?: Record<string, string>;
 };
 
@@ -1093,7 +1093,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with duplicated imports
  */
-export type ModelWithDuplicateImports = {
+export interface ModelWithDuplicateImports {
     propA?: ModelWithString;
     propB?: ModelWithString;
     propC?: ModelWithString;
@@ -1112,7 +1112,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with duplicated properties
  */
-export type ModelWithDuplicateProperties = {
+export interface ModelWithDuplicateProperties {
     prop?: ModelWithString;
 };
 
@@ -1127,7 +1127,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithEnum.ts 1`] = `
 /**
  * This is a model with one enum
  */
-export type ModelWithEnum = {
+export interface ModelWithEnum {
     /**
      * This is a simple enum with strings
      */
@@ -1179,7 +1179,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithEnumFromDescrip
 /**
  * This is a model with one enum
  */
-export type ModelWithEnumFromDescription = {
+export interface ModelWithEnumFromDescription {
     /**
      * Success=1,Warning=2,Error=3
      */
@@ -1197,7 +1197,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithInteger.ts 1`] 
 /**
  * This is a model with one number property
  */
-export type ModelWithInteger = {
+export interface ModelWithInteger {
     /**
      * This is a simple number property
      */
@@ -1215,7 +1215,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithNestedEnums.ts 
 /**
  * This is a model with nested enums
  */
-export type ModelWithNestedEnums = {
+export interface ModelWithNestedEnums {
     dictionaryWithEnum?: Record<string, 'Success' | 'Warning' | 'Error'>;
     dictionaryWithEnumFromDescription?: Record<string, number>;
     arrayWithEnum?: Array<'Success' | 'Warning' | 'Error'>;
@@ -1233,7 +1233,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithNestedPropertie
 /**
  * This is a model with one nested property
  */
-export type ModelWithNestedProperties = {
+export interface ModelWithNestedProperties {
     readonly first: {
         readonly second: {
             readonly third: string;
@@ -1252,7 +1252,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithNullableString.
 /**
  * This is a model with one string property
  */
-export type ModelWithNullableString = {
+export interface ModelWithNullableString {
     /**
      * This is a simple string property
      */
@@ -1274,7 +1274,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithOrderedProperti
 /**
  * This is a model with ordered properties
  */
-export type ModelWithOrderedProperties = {
+export interface ModelWithOrderedProperties {
     zebra?: string;
     apple?: string;
     hawaii?: string;
@@ -1291,11 +1291,11 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithPattern.ts 1`] 
 /**
  * This is a model that contains a some patterns
  */
-export type ModelWithPattern = {
+export interface ModelWithPattern {
     key: string;
     name: string;
     readonly enabled?: boolean;
-    readonly modified?: string;
+    readonly modified?: Date;
     id?: string;
     text?: string;
 };
@@ -1313,7 +1313,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one nested property
  */
-export type ModelWithProperties = {
+export interface ModelWithProperties {
     required: string;
     readonly requiredAndReadOnly: string;
     string?: string;
@@ -1340,7 +1340,7 @@ import type { ModelWithProperties } from './ModelWithProperties';
 /**
  * This is a model with one property containing a reference
  */
-export type ModelWithReference = {
+export interface ModelWithReference {
     prop?: ModelWithProperties;
 };
 
@@ -1355,7 +1355,7 @@ exports[`v2 should generate: ./test/generated/v2/models/ModelWithString.ts 1`] =
 /**
  * This is a model with one string property
  */
-export type ModelWithString = {
+export interface ModelWithString {
     /**
      * This is a simple string property
      */
@@ -2077,7 +2077,7 @@ export const $ModelWithPattern = {
             isReadOnly: true,
         },
         modified: {
-            type: 'string',
+            type: 'Date',
             isReadOnly: true,
             format: 'date-time',
         },
@@ -3923,7 +3923,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionBaseModel.ts 
 /**
  * This is a base model with two simple optional properties
  */
-export type CompositionBaseModel = {
+export interface CompositionBaseModel {
     firstName?: string;
     lastname?: string;
 };
@@ -3962,7 +3962,7 @@ import type { ModelWithEnum } from './ModelWithEnum';
 /**
  * This is a model with one property with a 'all of' relationship
  */
-export type CompositionWithAllOfAndNullable = {
+export interface CompositionWithAllOfAndNullable {
     propA?: ({
         boolean?: boolean;
     } & ModelWithEnum & ModelWithArray & ModelWithDictionary) | null;
@@ -3984,7 +3984,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one property with a 'any of' relationship
  */
-export type CompositionWithAnyOf = {
+export interface CompositionWithAnyOf {
     propA?: (ModelWithString | ModelWithEnum | ModelWithArray | ModelWithDictionary);
 };
 
@@ -4003,7 +4003,7 @@ import type { ModelWithEnum } from './ModelWithEnum';
 /**
  * This is a model with one property with a 'any of' relationship
  */
-export type CompositionWithAnyOfAndNullable = {
+export interface CompositionWithAnyOfAndNullable {
     propA?: ({
         boolean?: boolean;
     } | ModelWithEnum | ModelWithArray | ModelWithDictionary) | null;
@@ -4020,7 +4020,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionWithAnyOfAnon
 /**
  * This is a model with one property with a 'any of' relationship where the options are not $ref
  */
-export type CompositionWithAnyOfAnonymous = {
+export interface CompositionWithAnyOfAnonymous {
     propA?: ({
         propA?: string;
     } | string | number);
@@ -4042,7 +4042,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one property with a 'one of' relationship
  */
-export type CompositionWithOneOf = {
+export interface CompositionWithOneOf {
     propA?: (ModelWithString | ModelWithEnum | ModelWithArray | ModelWithDictionary);
 };
 
@@ -4057,7 +4057,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionWithOneOfAndC
 /**
  * This is a model that contains a dictionary of complex arrays (composited) within composition
  */
-export type CompositionWithOneOfAndComplexArrayDictionary = {
+export interface CompositionWithOneOfAndComplexArrayDictionary {
     propA?: (boolean | Record<string, Array<(number | string)>>);
 };
 
@@ -4076,7 +4076,7 @@ import type { ModelWithEnum } from './ModelWithEnum';
 /**
  * This is a model with one property with a 'one of' relationship
  */
-export type CompositionWithOneOfAndNullable = {
+export interface CompositionWithOneOfAndNullable {
     propA?: ({
         boolean?: boolean;
     } | ModelWithEnum | ModelWithArray | ModelWithDictionary) | null;
@@ -4093,7 +4093,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionWithOneOfAndS
 /**
  * This is a model that contains a dictionary of simple arrays within composition
  */
-export type CompositionWithOneOfAndSimpleArrayDictionary = {
+export interface CompositionWithOneOfAndSimpleArrayDictionary {
     propA?: (boolean | Record<string, Array<boolean>>);
 };
 
@@ -4108,7 +4108,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionWithOneOfAndS
 /**
  * This is a model that contains a simple dictionary within composition
  */
-export type CompositionWithOneOfAndSimpleDictionary = {
+export interface CompositionWithOneOfAndSimpleDictionary {
     propA?: (boolean | Record<string, number>);
 };
 
@@ -4123,7 +4123,7 @@ exports[`v3 should generate: ./test/generated/v3/models/CompositionWithOneOfAnon
 /**
  * This is a model with one property with a 'one of' relationship where the options are not $ref
  */
-export type CompositionWithOneOfAnonymous = {
+export interface CompositionWithOneOfAnonymous {
     propA?: ({
         propA?: string;
     } | string | number);
@@ -4157,7 +4157,7 @@ exports[`v3 should generate: ./test/generated/v3/models/DeprecatedModel.ts 1`] =
  * This is a deprecated model with a deprecated property
  * @deprecated
  */
-export type DeprecatedModel = {
+export interface DeprecatedModel {
     /**
      * This is a deprecated property
      * @deprecated
@@ -4323,10 +4323,10 @@ exports[`v3 should generate: ./test/generated/v3/models/File.ts 1`] = `
 /* tslint:disable */
 /* eslint-disable */
 
-export type File = {
+export interface File {
     readonly id?: string;
-    readonly updated_at?: string;
-    readonly created_at?: string;
+    readonly updatedAt?: Date;
+    readonly createdAt?: Date;
     mime: string;
     readonly file?: string;
 };
@@ -4342,7 +4342,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelCircle.ts 1`] = `
 /**
  * Circle
  */
-export type ModelCircle = {
+export interface ModelCircle {
     kind: 'circle';
     radius?: number;
 };
@@ -4358,7 +4358,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelSquare.ts 1`] = `
 /**
  * Square
  */
-export type ModelSquare = {
+export interface ModelSquare {
     kind: 'square';
     sideLength?: number;
 };
@@ -4413,7 +4413,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one property containing an array
  */
-export type ModelWithArray = {
+export interface ModelWithArray {
     prop?: Array<ModelWithString>;
     propWithFile?: Array<Blob>;
     propWithNumber?: Array<number>;
@@ -4430,7 +4430,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithBoolean.ts 1`] 
 /**
  * This is a model with one boolean property
  */
-export type ModelWithBoolean = {
+export interface ModelWithBoolean {
     /**
      * This is a simple boolean property
      */
@@ -4448,7 +4448,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithCircularReferen
 /**
  * This is a model with one property containing a circular reference
  */
-export type ModelWithCircularReference = {
+export interface ModelWithCircularReference {
     prop?: ModelWithCircularReference;
 };
 
@@ -4463,7 +4463,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithDictionary.ts 1
 /**
  * This is a model with one property containing a dictionary
  */
-export type ModelWithDictionary = {
+export interface ModelWithDictionary {
     prop?: Record<string, string>;
 };
 
@@ -4480,7 +4480,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with duplicated imports
  */
-export type ModelWithDuplicateImports = {
+export interface ModelWithDuplicateImports {
     propA?: ModelWithString;
     propB?: ModelWithString;
     propC?: ModelWithString;
@@ -4499,7 +4499,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with duplicated properties
  */
-export type ModelWithDuplicateProperties = {
+export interface ModelWithDuplicateProperties {
     prop?: ModelWithString;
 };
 
@@ -4514,7 +4514,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithEnum.ts 1`] = `
 /**
  * This is a model with one enum
  */
-export type ModelWithEnum = {
+export interface ModelWithEnum {
     /**
      * This is a simple enum with strings
      */
@@ -4566,7 +4566,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithEnumFromDescrip
 /**
  * This is a model with one enum
  */
-export type ModelWithEnumFromDescription = {
+export interface ModelWithEnumFromDescription {
     /**
      * Success=1,Warning=2,Error=3
      */
@@ -4584,7 +4584,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithInteger.ts 1`] 
 /**
  * This is a model with one number property
  */
-export type ModelWithInteger = {
+export interface ModelWithInteger {
     /**
      * This is a simple number property
      */
@@ -4602,7 +4602,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithNestedEnums.ts 
 /**
  * This is a model with nested enums
  */
-export type ModelWithNestedEnums = {
+export interface ModelWithNestedEnums {
     dictionaryWithEnum?: Record<string, 'Success' | 'Warning' | 'Error'>;
     dictionaryWithEnumFromDescription?: Record<string, number>;
     arrayWithEnum?: Array<'Success' | 'Warning' | 'Error'>;
@@ -4620,7 +4620,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithNestedPropertie
 /**
  * This is a model with one nested property
  */
-export type ModelWithNestedProperties = {
+export interface ModelWithNestedProperties {
     readonly first: {
         readonly second: {
             readonly third: string | null;
@@ -4639,7 +4639,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithNullableString.
 /**
  * This is a model with one string property
  */
-export type ModelWithNullableString = {
+export interface ModelWithNullableString {
     /**
      * This is a simple string property
      */
@@ -4669,7 +4669,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithOrderedProperti
 /**
  * This is a model with ordered properties
  */
-export type ModelWithOrderedProperties = {
+export interface ModelWithOrderedProperties {
     zebra?: string;
     apple?: string;
     hawaii?: string;
@@ -4686,11 +4686,11 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithPattern.ts 1`] 
 /**
  * This is a model that contains a some patterns
  */
-export type ModelWithPattern = {
+export interface ModelWithPattern {
     key: string;
     name: string;
     readonly enabled?: boolean;
-    readonly modified?: string;
+    readonly modified?: Date;
     id?: string;
     text?: string;
 };
@@ -4708,7 +4708,7 @@ import type { ModelWithString } from './ModelWithString';
 /**
  * This is a model with one nested property
  */
-export type ModelWithProperties = {
+export interface ModelWithProperties {
     required: string;
     readonly requiredAndReadOnly: string;
     requiredAndNullable: string | null;
@@ -4736,7 +4736,7 @@ import type { ModelWithProperties } from './ModelWithProperties';
 /**
  * This is a model with one property containing a reference
  */
-export type ModelWithReference = {
+export interface ModelWithReference {
     prop?: ModelWithProperties;
 };
 
@@ -4751,7 +4751,7 @@ exports[`v3 should generate: ./test/generated/v3/models/ModelWithString.ts 1`] =
 /**
  * This is a model with one string property
  */
-export type ModelWithString = {
+export interface ModelWithString {
     /**
      * This is a simple string property
      */
@@ -4766,7 +4766,7 @@ exports[`v3 should generate: ./test/generated/v3/models/Pageable.ts 1`] = `
 /* tslint:disable */
 /* eslint-disable */
 
-export type Pageable = {
+export interface Pageable {
     page?: number;
     size?: number;
     sort?: Array<string>;
@@ -5488,13 +5488,13 @@ export const $File = {
             isReadOnly: true,
             minLength: 1,
         },
-        updated_at: {
-            type: 'string',
+        updatedAt: {
+            type: 'Date',
             isReadOnly: true,
             format: 'date-time',
         },
-        created_at: {
-            type: 'string',
+        createdAt: {
+            type: 'Date',
             isReadOnly: true,
             format: 'date-time',
         },
@@ -5917,7 +5917,7 @@ export const $ModelWithPattern = {
             isReadOnly: true,
         },
         modified: {
-            type: 'string',
+            type: 'Date',
             isReadOnly: true,
             format: 'date-time',
         },

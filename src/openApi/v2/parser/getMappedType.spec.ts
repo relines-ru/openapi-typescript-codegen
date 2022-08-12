@@ -15,6 +15,7 @@ describe('getMappedType', () => {
         expect(getMappedType('object')).toEqual('any');
         expect(getMappedType('void')).toEqual('void');
         expect(getMappedType('null')).toEqual('null');
+        expect(getMappedType('string', 'date-time')).toEqual('Date');
         expect(getMappedType('unknown')).toEqual(undefined);
         expect(getMappedType('')).toEqual(undefined);
     });

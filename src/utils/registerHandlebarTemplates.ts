@@ -113,6 +113,7 @@ export const registerHandlebarTemplates = (root: {
     httpClient: HttpClient;
     useOptions: boolean;
     useUnionTypes: boolean;
+    writeNullable: boolean;
 }): Templates => {
     registerHandlebarHelpers(root);
 

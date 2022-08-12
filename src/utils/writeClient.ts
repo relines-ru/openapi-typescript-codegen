@@ -26,7 +26,7 @@ import { writeClientServices } from './writeClientServices';
  * @param exportServices Generate services
  * @param exportModels Generate models
  * @param exportSchemas Generate schemas
- * @param exportSchemas Generate schemas
+ * @param writeNullable Add nullable modifier to model fields
  * @param indent Indentation options (4, 2 or tab)
  * @param postfix Service name postfix
  * @param clientName Custom client class name
@@ -43,6 +43,7 @@ export const writeClient = async (
     exportServices: boolean,
     exportModels: boolean,
     exportSchemas: boolean,
+    writeNullable: boolean,
     indent: Indent,
     postfix: string,
     clientName?: string,
@@ -89,7 +90,7 @@ export const writeClient = async (
     if (exportModels) {
         await rmdir(outputPathModels);
         await mkdir(outputPathModels);
-        await writeClientModels(client.models, templates, outputPathModels, httpClient, useUnionTypes, indent);
+        await writeClientModels(client.models, templates, outputPathModels, httpClient, useUnionTypes, writeNullable, indent);
     }
 
     if (isDefined(clientName)) {

@@ -7,6 +7,7 @@ describe('registerHandlebarTemplates', () => {
             httpClient: HttpClient.FETCH,
             useOptions: false,
             useUnionTypes: false,
+            writeNullable: true,
         });
         expect(templates.index).toBeDefined();
         expect(templates.exports.model).toBeDefined();

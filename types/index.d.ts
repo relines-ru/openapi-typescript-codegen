@@ -23,6 +23,7 @@ export type Options = {
     exportServices?: boolean;
     exportModels?: boolean;
     exportSchemas?: boolean;
+    writeNullable?: boolean;
     indent?: Indent | '4' | '2' | 'tab';
     postfix?: string;
     request?: string;

@@ -1,3 +1,4 @@
+import camelCase from 'camelcase';
 import type { Model } from '../../../client/interfaces/Model';
 import { findOneOfParentDiscriminator, mapPropertyValue } from '../../../utils/discriminator';
 import { getPattern } from '../../../utils/getPattern';
@@ -35,7 +36,7 @@ export const getModelProperties = (
                 | 'enums'
                 | 'properties'
             > = {
-                name: escapeName(propertyName),
+                name: camelCase(escapeName(propertyName)),
                 description: property.description || null,
                 deprecated: property.deprecated === true,
                 isDefinition: false,

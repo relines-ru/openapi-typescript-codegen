@@ -23,6 +23,7 @@ export type Options = {
     exportServices?: boolean;
     exportModels?: boolean;
     exportSchemas?: boolean;
+    writeNullable?: boolean;
     indent?: Indent;
     postfix?: string;
     request?: string;
@@ -43,6 +44,7 @@ export type Options = {
  * @param exportServices Generate services
  * @param exportModels Generate models
  * @param exportSchemas Generate schemas
+ * @param writeNullable Add nullable modifier to model fields
  * @param indent Indentation options (4, 2 or tab)
  * @param postfix Service name postfix
  * @param request Path to custom request file
@@ -59,6 +61,7 @@ export const generate = async ({
     exportServices = true,
     exportModels = true,
     exportSchemas = false,
+    writeNullable = true,
     indent = Indent.SPACE_4,
     postfix = 'Service',
     request,
@@ -70,6 +73,7 @@ export const generate = async ({
         httpClient,
         useUnionTypes,
         useOptions,
+        writeNullable,
     });
 
     switch (openApiVersion) {
@@ -88,6 +92,7 @@ export const generate = async ({
                 exportServices,
                 exportModels,
                 exportSchemas,
+                writeNullable,
                 indent,
                 postfix,
                 clientName,
@@ -111,6 +116,7 @@ export const generate = async ({
                 exportServices,
                 exportModels,
                 exportSchemas,
+                writeNullable,
                 indent,
                 postfix,
                 clientName,

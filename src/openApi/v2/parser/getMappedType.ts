@@ -28,5 +28,8 @@ export const getMappedType = (type: string, format?: string): string | undefined
     if (format === 'binary') {
         return 'binary';
     }
+    if (type === 'string' && format === 'date-time') {
+        return 'Date';
+    }
     return TYPE_MAPPINGS.get(type);
 };

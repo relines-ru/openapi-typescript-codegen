@@ -40,6 +40,7 @@ export const writeClientServices = async (
             useUnionTypes,
             useOptions,
             postfix,
+            writeNullable: true,
             exportClient: isDefined(clientName),
         });
         await writeFile(file, i(f(templateResult), indent));
